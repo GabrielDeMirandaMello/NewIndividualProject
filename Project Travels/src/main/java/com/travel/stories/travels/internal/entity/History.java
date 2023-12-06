@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Entity()
-@Table(name = "users")
+@Entity
+@Table(name = "history")
 @Data
 @NoArgsConstructor
 public class History implements Serializable {
@@ -28,9 +28,9 @@ public class History implements Serializable {
     @Column(name = "comment")
     private String comment;
 
-    @Nullable
-    @JsonIgnore
-    @Column(name = "travel_picture", length = 50 * 1024 * 1024)
-    private byte[] travelPicture;
+//    @Nullable
+//    @JsonIgnore
+//    @Column(name = "travel_picture", length = 50 * 1024 * 1024)
+//    private byte[] travelPicture;
 
 }

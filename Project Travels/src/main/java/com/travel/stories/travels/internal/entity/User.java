@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Entity()
+@Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
@@ -49,8 +49,8 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private FavoriteCompany favoriteCompany;
 
-    @Nullable
-    @JsonIgnore
-    @Column(name = "profile_picture", length = 50 * 1024 * 1024)
-    private byte[] profilePicture;
+//    @Nullable
+//    @JsonIgnore
+//    @Column(name = "profile_picture", length = 50 * 1024 * 1024)
+//    private byte[] profilePicture;
 }
