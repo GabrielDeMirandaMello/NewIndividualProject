@@ -26,11 +26,11 @@ public class User implements Serializable {
     private String name;
 
     @Email
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     @NotNull
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "phone", unique = true)
     @NotNull
     private String phone;
 

@@ -6,9 +6,15 @@ import com.travel.stories.travels.api.usecase.DeleteUserById;
 import com.travel.stories.travels.api.usecase.GetUserById;
 import com.travel.stories.travels.api.usecase.GetUsers;
 import com.travel.stories.travels.internal.entity.User;
+import lombok.AllArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
+@AllArgsConstructor
+@ConditionalOnSingleCandidate(UserController.class)
 public class DefaultUserController implements UserController {
 
     private CreateUser createUser;
