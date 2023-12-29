@@ -2,8 +2,6 @@ package com.travel.stories.travels.api.controller;
 
 import com.travel.stories.travels.internal.entity.User;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

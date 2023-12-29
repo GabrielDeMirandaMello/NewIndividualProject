@@ -49,8 +49,4 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private FavoriteCompany favoriteCompany;
 
-//    @Nullable
-//    @JsonIgnore
-//    @Column(name = "profile_picture", length = 50 * 1024 * 1024)
-//    private byte[] profilePicture;
 }
