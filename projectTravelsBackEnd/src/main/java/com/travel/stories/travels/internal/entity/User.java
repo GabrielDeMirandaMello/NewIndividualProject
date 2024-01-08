@@ -44,9 +44,9 @@ public class User implements Serializable {
     @Column(name = "rest_month")
     private String restMonth;
 
+    @NotBlank
     @NotNull
     @Column(name = "favorite_company")
-    @Enumerated(EnumType.STRING)
-    private FavoriteCompany favoriteCompany;
+    private String favoriteCompany;
 
 }

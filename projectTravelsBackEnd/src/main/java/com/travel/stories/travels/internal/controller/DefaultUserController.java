@@ -6,6 +6,7 @@ import com.travel.stories.travels.api.usecase.DeleteUserById;
 import com.travel.stories.travels.api.usecase.GetUserById;
 import com.travel.stories.travels.api.usecase.GetUsers;
 import com.travel.stories.travels.internal.entity.User;
+import com.travel.stories.travels.internal.execption.UserAlreadyExistsExeption;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.web.bind.annotation.RestController;

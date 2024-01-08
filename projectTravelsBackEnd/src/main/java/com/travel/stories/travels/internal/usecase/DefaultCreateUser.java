@@ -2,9 +2,11 @@ package com.travel.stories.travels.internal.usecase;
 
 import com.travel.stories.travels.api.usecase.CreateUser;
 import com.travel.stories.travels.internal.entity.User;
+import com.travel.stories.travels.internal.execption.UserAlreadyExistsExeption;
 import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
