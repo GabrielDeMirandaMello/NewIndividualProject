@@ -8,7 +8,7 @@ import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 
-public class ApiUserTest {
+public class ApiUserTestIntegration {
 
     @Test
     public void whenCallingTheUserByIdApi_ReturnSuccess() {
