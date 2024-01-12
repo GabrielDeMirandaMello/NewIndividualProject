@@ -1,12 +1,11 @@
 package com.travel.stories.travels.internal.controller;
 
 import com.travel.stories.travels.api.controller.UserController;
-import com.travel.stories.travels.api.usecase.CreateUser;
-import com.travel.stories.travels.api.usecase.DeleteUserById;
-import com.travel.stories.travels.api.usecase.GetUserById;
-import com.travel.stories.travels.api.usecase.GetUsers;
+import com.travel.stories.travels.api.usecase.*;
 import com.travel.stories.travels.internal.entity.User;
 import com.travel.stories.travels.internal.execption.UserAlreadyExistsExeption;
+import com.travel.stories.travels.internal.records.AuthenticationLogin;
+import com.travel.stories.travels.internal.records.LoginResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +21,7 @@ public class DefaultUserController implements UserController {
     private DeleteUserById deleteUserById;
     private GetUsers getUsers;
     private GetUserById getUserById;
+    private AuthLogin authLogin;
 
     @Override
     public List<User> getAllUsers() {
@@ -36,6 +36,11 @@ public class DefaultUserController implements UserController {
     @Override
     public User createUser(User user) {
         return this.createUser.execute(user);
+    }
+
+    @Override
+    public LoginResponse login(AuthenticationLogin login) {
+        return this.authLogin.execute(login);
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,13 @@ public class DefaultCreateUser implements CreateUser {
 
     @Override
     public User execute(User user) {
+        if(this.userRepository.findByEmail(user.getEmail()) != null){
+            System.out.println("Usuario não encontrado");
+        } else {
+            String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+            user.setPassword(encodedPassword);
+        }
+
         return this.userRepository.save(user);
     }
 }
