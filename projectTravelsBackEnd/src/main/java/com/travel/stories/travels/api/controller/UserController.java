@@ -16,10 +16,10 @@ import java.util.List;
 public interface UserController {
 
     @GetMapping
-    List<User> getAllUsers();
+    ResponseEntity<List<UserResponse>>  getAllUsers();
 
     @GetMapping("/{id}")
-    User getUserById(@PathVariable Long id);
+    ResponseEntity<UserResponse> getUserById(@PathVariable Long id);
 
     @PostMapping("/register")
     ResponseEntity<UserResponse> createUser(@Valid @RequestBody User user);
@@ -28,5 +28,6 @@ public interface UserController {
     LoginResponse login(@Valid @RequestBody AuthenticationLogin login);
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     void deleteUserById(@PathVariable Long id);
 }

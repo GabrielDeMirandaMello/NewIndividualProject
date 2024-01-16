@@ -8,6 +8,7 @@ import com.travel.stories.travels.api.usecase.GetHistorys;
 import com.travel.stories.travels.internal.entity.History;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class DefaultHistoryController implements HistoryController {
     private DeleteHistoryById deleteHistoryById;
 
     @Override
-    public History getHistory(Long id) {
+    public ResponseEntity<History> getHistory(Long id) {
         return this.getHistoryById.execute(id);
     }
 
@@ -33,7 +34,7 @@ public class DefaultHistoryController implements HistoryController {
     }
 
     @Override
-    public History createHistory(History history) {
+    public ResponseEntity<History> createHistory(History history) {
         return this.createHistory.execute(history);
     }
 

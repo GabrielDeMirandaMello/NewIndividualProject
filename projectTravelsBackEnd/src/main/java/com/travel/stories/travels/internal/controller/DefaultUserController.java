@@ -26,12 +26,12 @@ public class DefaultUserController implements UserController {
     private AuthLogin authLogin;
 
     @Override
-    public List<User> getAllUsers() {
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
         return this.getUsers.execute();
     }
 
     @Override
-    public User getUserById(Long id) {
+    public ResponseEntity<UserResponse> getUserById(Long id) {
         return this.getUserById.execute(id);
     }
 

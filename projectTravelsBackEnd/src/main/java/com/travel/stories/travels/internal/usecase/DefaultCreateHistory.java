@@ -5,7 +5,11 @@ import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.repository.HistoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.net.URI;
 
 @Service
 @Transactional
@@ -15,7 +19,7 @@ public class DefaultCreateHistory implements CreateHistory {
     private HistoryRepository historyRepository;
 
     @Override
-    public History execute(History history) {
-        return this.historyRepository.save(history);
+    public ResponseEntity<History> execute(History history) {
+        return new ResponseEntity<>(this.historyRepository.save(history), HttpStatus.CREATED);
     }
 }
