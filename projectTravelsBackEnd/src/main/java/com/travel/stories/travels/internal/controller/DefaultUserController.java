@@ -6,8 +6,10 @@ import com.travel.stories.travels.internal.entity.User;
 import com.travel.stories.travels.internal.execption.UserAlreadyExistsExeption;
 import com.travel.stories.travels.internal.records.AuthenticationLogin;
 import com.travel.stories.travels.internal.records.LoginResponse;
+import com.travel.stories.travels.internal.records.UserResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class DefaultUserController implements UserController {
     }
 
     @Override
-    public User createUser(User user) {
+    public ResponseEntity<UserResponse> createUser(User user) {
         return this.createUser.execute(user);
     }
 

@@ -3,7 +3,10 @@ package com.travel.stories.travels.api.controller;
 import com.travel.stories.travels.internal.entity.User;
 import com.travel.stories.travels.internal.records.AuthenticationLogin;
 import com.travel.stories.travels.internal.records.LoginResponse;
+import com.travel.stories.travels.internal.records.UserResponse;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +22,7 @@ public interface UserController {
     User getUserById(@PathVariable Long id);
 
     @PostMapping("/register")
-    User createUser(@Valid @RequestBody User user);
+    ResponseEntity<UserResponse> createUser(@Valid @RequestBody User user);
 
     @PostMapping("/login")
     LoginResponse login(@Valid @RequestBody AuthenticationLogin login);
