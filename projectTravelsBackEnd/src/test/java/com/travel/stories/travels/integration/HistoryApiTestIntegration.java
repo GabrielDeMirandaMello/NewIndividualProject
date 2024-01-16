@@ -1,4 +1,4 @@
-package com.travel.stories.travels;
+package com.travel.stories.travels.integration;
 
 import org.junit.jupiter.api.Test;
 

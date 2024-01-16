@@ -5,7 +5,11 @@ import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.repository.HistoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -16,7 +20,9 @@ public class DefaultGetHistoryById implements GetHistoryById {
     private HistoryRepository historyRepository;
 
     @Override
-    public History execute(Long id) {
-        return this.historyRepository.findById(id).orElseThrow();
+    public ResponseEntity<History> execute(Long id) {
+        Optional<History> history = this.historyRepository.findById(id);
+        return history.map( value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

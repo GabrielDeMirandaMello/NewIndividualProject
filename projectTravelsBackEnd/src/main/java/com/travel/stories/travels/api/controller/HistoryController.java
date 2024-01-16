@@ -1,6 +1,8 @@
 package com.travel.stories.travels.api.controller;
 
 import com.travel.stories.travels.internal.entity.History;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,14 +12,16 @@ import java.util.List;
 public interface HistoryController {
 
     @GetMapping("/{id}")
-    History getHistory(@PathVariable Long id);
+    ResponseEntity<History> getHistory(@PathVariable Long id);
 
     @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
     List<History> getAllHistory();
 
     @PostMapping
-    History createHistory(@RequestBody History history);
+    ResponseEntity<History> createHistory(@RequestBody History history);
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     void deleteHistory(@PathVariable Long id);
 }
