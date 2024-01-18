@@ -8,6 +8,7 @@ import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Service
 @Transactional
+@NoArgsConstructor
 @AllArgsConstructor
 public class DefaultCreateUser implements CreateUser {
 
@@ -26,12 +28,12 @@ public class DefaultCreateUser implements CreateUser {
 
     @Override
     public ResponseEntity<UserResponse> execute(User user) {
-        if(this.userRepository.findByEmail(user.getEmail()) != null){
+        if(userRepository.findByEmail(user.getEmail()) != null){
            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } else {
             String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
             user.setPassword(encodedPassword);
         }
-        return new ResponseEntity<>(UserResponse.parserUser(this.userRepository.save(user)), HttpStatus.CREATED);
+        return new ResponseEntity<>(UserResponse.parserUser(userRepository.save(user)), HttpStatus.CREATED);
     }
 }
