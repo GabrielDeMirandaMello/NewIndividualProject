@@ -22,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements UserDetails {
 
-    @Column(name = "Id")
+    @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
