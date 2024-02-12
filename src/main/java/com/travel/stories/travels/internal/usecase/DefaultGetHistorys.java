@@ -5,6 +5,7 @@ import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.repository.HistoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 public class DefaultGetHistorys implements GetHistorys {
-
+    @Autowired
     private HistoryRepository historyRepository;
 
     @Override

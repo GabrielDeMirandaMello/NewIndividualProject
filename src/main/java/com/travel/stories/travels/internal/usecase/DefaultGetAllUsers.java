@@ -6,6 +6,7 @@ import com.travel.stories.travels.internal.records.UserResponse;
 import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class DefaultGetAllUsers implements GetUsers {
 
+    @Autowired
     private UserRepository userRepository;
 
     @Override

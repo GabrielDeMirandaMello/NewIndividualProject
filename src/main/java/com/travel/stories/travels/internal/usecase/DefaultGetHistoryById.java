@@ -5,6 +5,7 @@ import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.repository.HistoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @Transactional
 @AllArgsConstructor
 public class DefaultGetHistoryById implements GetHistoryById {
-
+    @Autowired
     private HistoryRepository historyRepository;
 
     @Override

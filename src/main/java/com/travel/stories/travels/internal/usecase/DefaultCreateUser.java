@@ -9,6 +9,7 @@ import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @AllArgsConstructor
 public class DefaultCreateUser implements CreateUser {
 
+    @Autowired
     private UserRepository userRepository;
 
     @Override
