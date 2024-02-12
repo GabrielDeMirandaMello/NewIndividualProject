@@ -28,8 +28,8 @@ public class DefaultCreateUser implements CreateUser {
 
     @Override
     public ResponseEntity<UserResponse> execute(User user) {
-        if(userRepository.findByEmail(user.getEmail()) != null){
-           return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        if(userRepository.findByEmail(user.getEmail()).isPresent()){
+           return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
             user.setPassword(encodedPassword);
