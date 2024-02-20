@@ -1,4 +1,4 @@
-package com.travel.stories.travels.internal.configuration;
+package com.travel.stories.travels.internal.configurations;
 
 import com.travel.stories.travels.internal.usecase.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()

@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/history")
-@CrossOrigin(maxAge = 3600, origins = "*")
 public interface HistoryController {
 
     @GetMapping("/{id}")
