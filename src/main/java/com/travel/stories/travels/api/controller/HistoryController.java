@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/history")
+@CrossOrigin()
 public interface HistoryController {
 
     @GetMapping("/{id}")
