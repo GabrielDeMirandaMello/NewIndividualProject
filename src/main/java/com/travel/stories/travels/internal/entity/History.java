@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "history")
@@ -27,6 +28,9 @@ public class History implements Serializable {
 
     @Column(name = "comment")
     private String comment;
+
+    @Column(name = "like_count")
+    private Long likeCount;
 
 //    @Nullable
 //    @JsonIgnore
