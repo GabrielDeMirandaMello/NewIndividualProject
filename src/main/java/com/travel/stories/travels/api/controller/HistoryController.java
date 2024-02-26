@@ -27,5 +27,13 @@ public interface HistoryController {
     void deleteHistory(@PathVariable Long id);
 
     @PutMapping("/like/{id}")
+    @CrossOrigin(maxAge = 3600)
     void updateLike(@PathVariable Long id);
+
+    @PutMapping("/disliked/{id}")
+    @CrossOrigin(maxAge = 3600)
+    void updateDisliked(@PathVariable Long id);
+
+    @GetMapping("/{filtrate}/{buscar}")
+    ResponseEntity<List<History>> retrieveStorys(@PathVariable String filtrate, @PathVariable String buscar );
 }

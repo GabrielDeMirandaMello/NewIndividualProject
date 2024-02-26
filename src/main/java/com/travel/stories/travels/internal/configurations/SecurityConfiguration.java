@@ -41,9 +41,10 @@ public class SecurityConfiguration {
 
 
                         .requestMatchers(HttpMethod.GET, "/api/history/all").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers(HttpMethod.GET, "/api/history").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.GET, "/api/history/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.POST, "/api/history").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.PUT, "/api/history/like/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.PUT, "/api/history/disliked/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.DELETE, "/api/history/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

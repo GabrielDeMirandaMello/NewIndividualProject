@@ -9,5 +9,9 @@ import java.util.Optional;
 
 public interface HistoryRepository extends JpaRepository<History, Long> {
 
-    Optional<List<History>> findAllByUsersId(User user);
+    Optional<List<History>> findAllByUsers(User user);
+
+    List<History> findAllByNameUserContainsIgnoreCase(String buscar);
+    List<History> findAllByTitleContainsIgnoreCase(String buscar);
+    List<History> findAllByDescriptionContainsIgnoreCase(String buscar);
 }
