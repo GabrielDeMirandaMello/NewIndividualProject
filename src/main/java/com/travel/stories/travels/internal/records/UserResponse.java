@@ -1,7 +1,10 @@
 package com.travel.stories.travels.internal.records;
 
 
+import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.entity.User;
+
+import java.util.List;
 
 public record UserResponse(
         Long id,
@@ -9,7 +12,9 @@ public record UserResponse(
         String email,
         String phone,
         String restMonth,
-        String favoriteCompany
+        String favoriteCompany,
+
+        List<History> histories
         ) {
 
         public static UserResponse parserUser(User user) {
@@ -19,7 +24,8 @@ public record UserResponse(
                         user.getEmail(),
                         user.getPhone(),
                         user.getRestMonth(),
-                        user.getFavoriteCompany()
+                        user.getFavoriteCompany(),
+                        user.getHistories()
                 );
         }
 }

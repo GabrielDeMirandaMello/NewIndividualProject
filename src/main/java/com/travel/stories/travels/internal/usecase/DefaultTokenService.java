@@ -43,7 +43,7 @@ public class DefaultTokenService {
                     .verify(token)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            return "";
+            return "error na validação do token";
         }
     }
     private Instant genExpirationDate(){

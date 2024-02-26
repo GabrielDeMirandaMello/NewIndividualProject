@@ -23,10 +23,9 @@ public class DefaultGetUserById implements GetUserById {
 
     @Override
     public ResponseEntity<UserResponse> execute(Long id) {
-        Optional<User> user = this.userRepository.findById(id);
+        User user = this.userRepository.findById(id).orElseThrow();
 
-        return user.map(value -> new ResponseEntity<>(UserResponse.parserUser(value), HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return new ResponseEntity<>(UserResponse.parserUser(user), HttpStatus.OK);
 
     }
 }

@@ -19,10 +19,13 @@ public interface HistoryController {
     @ResponseStatus(HttpStatus.OK)
     List<History> getAllHistory();
 
-    @PostMapping
-    ResponseEntity<History> createHistory(@RequestBody History history);
+    @PostMapping("/create/{id}")
+    ResponseEntity<History> createHistory(@PathVariable Long id, @RequestBody History history);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deleteHistory(@PathVariable Long id);
+
+    @PutMapping("/like/{id}")
+    void updateLike(@PathVariable Long id);
 }
