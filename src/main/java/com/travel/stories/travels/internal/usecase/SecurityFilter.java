@@ -1,5 +1,6 @@
 package com.travel.stories.travels.internal.usecase;
 
+import com.travel.stories.travels.internal.entity.User;
 import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -29,9 +30,9 @@ public class SecurityFilter extends OncePerRequestFilter {
         var token = this.recoverToken(request);
         if (token != null) {
             var login = this.defaultTokenService.validationToken(token);
-            Optional<UserDetails> user = this.userRepository.findByEmail(login);
+            User user = this.userRepository.findByEmail(login).orElseThrow();
 
-            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.orElseThrow().getAuthorities());
+            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);

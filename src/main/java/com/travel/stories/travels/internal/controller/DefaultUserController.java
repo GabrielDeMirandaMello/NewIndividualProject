@@ -24,6 +24,7 @@ public class DefaultUserController implements UserController {
     private GetUsers getUsers;
     private GetUserById getUserById;
     private AuthLogin authLogin;
+    private UpdateUser updateUser;
 
     @Override
     public ResponseEntity<List<UserResponse>> getAllUsers() {
@@ -48,5 +49,10 @@ public class DefaultUserController implements UserController {
     @Override
     public void deleteUserById(Long id) {
         this.deleteUserById.execute(id);
+    }
+
+    @Override
+    public ResponseEntity<UserResponse> updateUser(UserResponse userResponse, Long id) {
+        return this.updateUser.execute(userResponse, id);
     }
 }

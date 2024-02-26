@@ -1,10 +1,7 @@
 package com.travel.stories.travels.internal.controller;
 
 import com.travel.stories.travels.api.controller.HistoryController;
-import com.travel.stories.travels.api.usecase.CreateHistory;
-import com.travel.stories.travels.api.usecase.DeleteHistoryById;
-import com.travel.stories.travels.api.usecase.GetHistoryById;
-import com.travel.stories.travels.api.usecase.GetHistorys;
+import com.travel.stories.travels.api.usecase.*;
 import com.travel.stories.travels.internal.entity.History;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
@@ -22,6 +19,7 @@ public class DefaultHistoryController implements HistoryController {
     private GetHistoryById getHistoryById;
     private GetHistorys getHistorys;
     private DeleteHistoryById deleteHistoryById;
+    private UpdateLike updateLike;
 
     @Override
     public ResponseEntity<History> getHistory(Long id) {
@@ -34,12 +32,17 @@ public class DefaultHistoryController implements HistoryController {
     }
 
     @Override
-    public ResponseEntity<History> createHistory(History history) {
-        return this.createHistory.execute(history);
+    public ResponseEntity<History> createHistory(Long id, History history) {
+        return this.createHistory.execute(id, history);
     }
 
     @Override
     public void deleteHistory(Long id) {
         this.deleteHistoryById.execute(id);
+    }
+
+    @Override
+    public void updateLike(Long id) {
+        this.updateLike.execute(id);
     }
 }
