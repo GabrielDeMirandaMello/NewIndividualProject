@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/history")
-@CrossOrigin()
+@CrossOrigin
 public interface HistoryController {
 
     @GetMapping("/{id}")
@@ -23,15 +23,12 @@ public interface HistoryController {
     ResponseEntity<History> createHistory(@PathVariable Long id, @RequestBody History history);
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     void deleteHistory(@PathVariable Long id);
 
     @PutMapping("/like/{id}")
-    @CrossOrigin(maxAge = 3600)
     void updateLike(@PathVariable String id);
 
     @PutMapping("/disliked/{id}")
-    @CrossOrigin(maxAge = 3600)
     void updateDisliked(@PathVariable String id);
 
     @GetMapping("/{type}/{filtrate}/{buscar}")
