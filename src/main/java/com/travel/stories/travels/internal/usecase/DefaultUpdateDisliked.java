@@ -1,6 +1,6 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.api.usecase.UpdateLike;
+import com.travel.stories.travels.api.usecase.UpdateDisliked;
 import com.travel.stories.travels.internal.entity.History;
 import com.travel.stories.travels.internal.repository.HistoryRepository;
 import jakarta.transaction.Transactional;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-@NoArgsConstructor
 @AllArgsConstructor
-public class DefaultUpdateLike implements UpdateLike {
+@NoArgsConstructor
+public class DefaultUpdateDisliked implements UpdateDisliked {
 
     @Autowired
     private HistoryRepository historyRepository;
@@ -21,7 +21,7 @@ public class DefaultUpdateLike implements UpdateLike {
     @Override
     public void execute(String id) {
         History history = this.historyRepository.findById(Long.getLong(id)).orElseThrow();
-        history.setLikeCount(history.getLikeCount() + 1);
+        history.setLikeCount(history.getLikeCount() - 1);
         this.historyRepository.save(history);
     }
 }

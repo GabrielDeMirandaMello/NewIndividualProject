@@ -8,6 +8,7 @@ import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +32,9 @@ public class DefaultGetAllUsers implements GetUsers {
         List<User> users = this.userRepository.findAll();
         List<UserResponse> userResponses = new ArrayList<>();
         users.stream().map(user -> {
-                    user.setHistories(this.historyRepository.findAllByUsersId(user).orElseThrow());
+                    user.setHistories(this.historyRepository.findAllByUsers(user).orElseThrow());
             return userResponses.add(UserResponse.parserUser(user));
-        }).collect(Collectors.toList());
-        return ResponseEntity.ok(userResponses);
+        }).collect(Collectors.toSet());
+        return ResponseEntity.status(HttpStatus.OK).body(userResponses);
     }
 }

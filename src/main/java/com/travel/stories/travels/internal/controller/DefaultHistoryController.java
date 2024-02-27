@@ -20,6 +20,8 @@ public class DefaultHistoryController implements HistoryController {
     private GetHistorys getHistorys;
     private DeleteHistoryById deleteHistoryById;
     private UpdateLike updateLike;
+    private RetrieveStorys retrieveStorys;
+    private UpdateDisliked updateDisliked;
 
     @Override
     public ResponseEntity<History> getHistory(Long id) {
@@ -42,7 +44,17 @@ public class DefaultHistoryController implements HistoryController {
     }
 
     @Override
-    public void updateLike(Long id) {
+    public void updateLike(String id) {
         this.updateLike.execute(id);
+    }
+
+    @Override
+    public void updateDisliked(String id) {
+        this.updateDisliked.execute(id);
+    }
+
+    @Override
+    public ResponseEntity<List<History>> retrieveStorys(String type, String filtrate, String buscar) {
+        return this.retrieveStorys.execute(type, filtrate, buscar);
     }
 }

@@ -21,9 +21,10 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements UserDetails {
 
-    @Column(name = "id")
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")

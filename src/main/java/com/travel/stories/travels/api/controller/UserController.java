@@ -32,6 +32,6 @@ public interface UserController {
     @ResponseStatus(HttpStatus.OK)
     void deleteUserById(@PathVariable Long id);
 
-    @PutMapping("/update/{id}")
-    ResponseEntity<UserResponse> updateUser(@Valid @RequestBody UserResponse userResponse, @PathVariable Long id);
+    @PutMapping("/update")
+    ResponseEntity<UserResponse> updateUser(@Valid @RequestBody UserResponse userResponse);
 }

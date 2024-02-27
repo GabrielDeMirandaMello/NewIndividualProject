@@ -4,5 +4,5 @@ import com.travel.stories.travels.internal.records.UserResponse;
 import org.springframework.http.ResponseEntity;
 
 public interface UpdateUser {
-    ResponseEntity<UserResponse> execute(UserResponse userResponse, Long id);
+    ResponseEntity<UserResponse> execute(UserResponse userResponse);
 }
