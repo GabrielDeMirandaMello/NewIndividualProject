@@ -20,7 +20,7 @@ public class DefaultUpdateLike implements UpdateLike {
 
     @Override
     public void execute(String id) {
-        History history = this.historyRepository.findById(Long.getLong(id)).orElseThrow();
+        History history = this.historyRepository.findById(Long.parseLong(id)).orElseThrow();
         history.setLikeCount(history.getLikeCount() + 1);
         this.historyRepository.save(history);
     }
