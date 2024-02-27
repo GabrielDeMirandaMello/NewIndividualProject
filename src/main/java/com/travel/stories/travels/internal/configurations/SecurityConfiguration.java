@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/register").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/users/update/**").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/users/update/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasRole(UserRole.ADMIN.name())
                         .requestMatchers(HttpMethod.GET, "/api/users").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/users/**").authenticated()
