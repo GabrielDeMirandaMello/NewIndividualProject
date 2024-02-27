@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RetrieveStorys {
 
-    ResponseEntity<List<History>> execute(String filtrate, String buscar);
+    ResponseEntity<List<History>> execute(String type, String filtrate, String buscar);
 }

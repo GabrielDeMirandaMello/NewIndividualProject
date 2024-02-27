@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -19,6 +21,7 @@ public class DefaultGetHistorys implements GetHistorys {
 
     @Override
     public List<History> execute() {
-        return this.historyRepository.findAll();
+        return this.historyRepository.findAll().stream().sorted(Comparator.comparing(History::getId).reversed())
+                .collect(Collectors.toList());
     }
 }

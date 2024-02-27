@@ -24,19 +24,58 @@ public class DefaultRetrieveStorys implements RetrieveStorys {
     private HistoryRepository historyRepository;
 
     @Override
-    public ResponseEntity<List<History>> execute(String filtrate, String buscar) {
-        if (buscar != null) {
-            return switch (filtrate) {
-                case "name" ->
-                        ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByNameUserContainsIgnoreCase(buscar));
-                case "title" ->
-                        ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByTitleContainsIgnoreCase(buscar));
-                case "description" ->
-                        ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByDescriptionContainsIgnoreCase(buscar));
-                default -> ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            };
-        } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    public ResponseEntity<List<History>> execute(String type, String filtrate, String buscar) {
+        List<History> listStory = new ArrayList<>();
+        if (type.equals("public")) {
+            if (buscar != null) {
+                return switch (filtrate) {
+                    case "name" ->
+                            ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByNameUserContainsIgnoreCase(buscar));
+                    case "title" ->
+                            ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByTitleContainsIgnoreCase(buscar));
+                    case "description" ->
+                            ResponseEntity.status(HttpStatus.OK).body(this.historyRepository.findAllByDescriptionContainsIgnoreCase(buscar));
+                    default -> ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                };
+            } else {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
         }
+        else {
+            if (buscar != null) {
+                return this.getList(
+                        this.historyRepository.findAllByNameUserContainsIgnoreCase(type), filtrate, buscar);
+            } else {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+        }
+    }
+
+    private ResponseEntity<List<History>> getList(List<History> story,String filtrate, String buscar) {
+        return switch (filtrate) {
+            case "title" ->  ResponseEntity.status(HttpStatus.OK).body(this.addInListTitle(story, buscar, "title"));
+
+            case "description" ->
+                    ResponseEntity.status(HttpStatus.OK).body(this.addInListTitle(story, buscar, "description"));
+            default -> ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        };
+    }
+
+    private List<History> addInListTitle(List<History> newListStory, String buscar, String filter) {
+        List<History> listFiltrate = new ArrayList<>();
+        if (filter.equals("title")) {
+            for (History history : newListStory) {
+                if (history.getTitle().contains(buscar)) {
+                    listFiltrate.add(history);
+                }
+            }
+        } else {
+            for (History history : newListStory) {
+                if (history.getDescription().contains(buscar)) {
+                    listFiltrate.add(history);
+                }
+            }
+        }
+        return listFiltrate;
     }
 }

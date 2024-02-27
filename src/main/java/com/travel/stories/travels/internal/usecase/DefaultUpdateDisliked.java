@@ -19,8 +19,8 @@ public class DefaultUpdateDisliked implements UpdateDisliked {
     private HistoryRepository historyRepository;
 
     @Override
-    public void execute(Long id) {
-        History history = this.historyRepository.findById(id).orElseThrow();
+    public void execute(String id) {
+        History history = this.historyRepository.findById(Long.getLong(id)).orElseThrow();
         history.setLikeCount(history.getLikeCount() - 1);
         this.historyRepository.save(history);
     }

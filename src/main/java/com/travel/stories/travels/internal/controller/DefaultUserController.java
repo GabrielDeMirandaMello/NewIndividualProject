@@ -52,7 +52,7 @@ public class DefaultUserController implements UserController {
     }
 
     @Override
-    public ResponseEntity<UserResponse> updateUser(UserResponse userResponse, Long id) {
-        return this.updateUser.execute(userResponse, id);
+    public ResponseEntity<UserResponse> updateUser(UserResponse userResponse) {
+        return this.updateUser.execute(userResponse);
     }
 }

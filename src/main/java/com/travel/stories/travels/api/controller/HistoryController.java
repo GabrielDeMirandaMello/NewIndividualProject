@@ -28,12 +28,12 @@ public interface HistoryController {
 
     @PutMapping("/like/{id}")
     @CrossOrigin(maxAge = 3600)
-    void updateLike(@PathVariable Long id);
+    void updateLike(@PathVariable String id);
 
     @PutMapping("/disliked/{id}")
     @CrossOrigin(maxAge = 3600)
-    void updateDisliked(@PathVariable Long id);
+    void updateDisliked(@PathVariable String id);
 
-    @GetMapping("/{filtrate}/{buscar}")
-    ResponseEntity<List<History>> retrieveStorys(@PathVariable String filtrate, @PathVariable String buscar );
+    @GetMapping("/{type}/{filtrate}/{buscar}")
+    ResponseEntity<List<History>> retrieveStorys(@PathVariable String type, @PathVariable String filtrate, @PathVariable String buscar );
 }

@@ -22,8 +22,8 @@ public class DefaultUpdateUser implements UpdateUser {
     private UserRepository userRepository;
 
     @Override
-    public ResponseEntity<UserResponse> execute(UserResponse userResponse, Long id) {
-        User user = this.userRepository.findById(id).orElseThrow();
+    public ResponseEntity<UserResponse> execute(UserResponse userResponse) {
+        User user = this.userRepository.findById(userResponse.id()).orElseThrow();
         user.setName(userResponse.name());
         user.setPhone(userResponse.phone());
         user.setEmail(userResponse.email());
