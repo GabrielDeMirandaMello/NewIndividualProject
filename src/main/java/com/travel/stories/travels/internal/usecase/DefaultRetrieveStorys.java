@@ -1,7 +1,7 @@
 package com.travel.stories.travels.internal.usecase;
 
 import com.travel.stories.travels.api.usecase.RetrieveStorys;
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -24,8 +24,8 @@ public class DefaultRetrieveStorys implements RetrieveStorys {
     private StoryRepository storyRepository;
 
     @Override
-    public ResponseEntity<List<History>> execute(String type, String filtrate, String buscar) {
-        List<History> listStory = new ArrayList<>();
+    public ResponseEntity<List<Story>> execute(String type, String filtrate, String buscar) {
+        List<Story> listStory = new ArrayList<>();
         if (type.equals("public")) {
             if (buscar != null) {
                 return switch (filtrate) {
@@ -51,7 +51,7 @@ public class DefaultRetrieveStorys implements RetrieveStorys {
         }
     }
 
-    private ResponseEntity<List<History>> getList(List<History> story,String filtrate, String buscar) {
+    private ResponseEntity<List<Story>> getList(List<Story> story,String filtrate, String buscar) {
         return switch (filtrate) {
             case "title" ->  ResponseEntity.status(HttpStatus.OK).body(this.addInListTitle(story, buscar, "title"));
 
@@ -61,18 +61,18 @@ public class DefaultRetrieveStorys implements RetrieveStorys {
         };
     }
 
-    private List<History> addInListTitle(List<History> newListStory, String buscar, String filter) {
-        List<History> listFiltrate = new ArrayList<>();
+    private List<Story> addInListTitle(List<Story> newListStory, String buscar, String filter) {
+        List<Story> listFiltrate = new ArrayList<>();
         if (filter.equals("title")) {
-            for (History history : newListStory) {
-                if (history.getTitle().contains(buscar)) {
-                    listFiltrate.add(history);
+            for (Story story : newListStory) {
+                if (story.getTitle().contains(buscar)) {
+                    listFiltrate.add(story);
                 }
             }
         } else {
-            for (History history : newListStory) {
-                if (history.getDescription().contains(buscar)) {
-                    listFiltrate.add(history);
+            for (Story story : newListStory) {
+                if (story.getDescription().contains(buscar)) {
+                    listFiltrate.add(story);
                 }
             }
         }

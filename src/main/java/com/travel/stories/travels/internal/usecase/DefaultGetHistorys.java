@@ -1,7 +1,7 @@
 package com.travel.stories.travels.internal.usecase;
 
 import com.travel.stories.travels.api.usecase.GetHistorys;
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -20,8 +20,8 @@ public class DefaultGetHistorys implements GetHistorys {
     private StoryRepository storyRepository;
 
     @Override
-    public List<History> execute() {
-        return this.storyRepository.findAll().stream().sorted(Comparator.comparing(History::getId).reversed())
+    public List<Story> execute() {
+        return this.storyRepository.findAll().stream().sorted(Comparator.comparing(Story::getId).reversed())
                 .collect(Collectors.toList());
     }
 }

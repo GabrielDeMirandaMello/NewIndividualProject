@@ -34,8 +34,8 @@ public class DefaultHistoryController implements HistoryController {
     }
 
     @Override
-    public ResponseEntity<Story> createHistory(Long id, Story history) {
-        return this.createHistory.execute(id, history);
+    public ResponseEntity<Story> createHistory(Long id, Story story) {
+        return this.createHistory.execute(id, story);
     }
 
     @Override

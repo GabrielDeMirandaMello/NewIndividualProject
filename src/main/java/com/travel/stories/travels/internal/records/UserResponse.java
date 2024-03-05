@@ -1,7 +1,7 @@
 package com.travel.stories.travels.internal.records;
 
 
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.entity.User;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public record UserResponse(
         String restMonth,
         String favoriteCompany,
 
-        List<History> histories
+        List<Story> histories
         ) {
 
         public static UserResponse parserUser(User user) {

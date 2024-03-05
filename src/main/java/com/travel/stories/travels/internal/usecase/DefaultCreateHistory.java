@@ -24,10 +24,10 @@ public class DefaultCreateHistory implements CreateHistory {
     private UserRepository userRepository;
 
     @Override
-    public ResponseEntity<Story> execute(Long id, Story history) {
+    public ResponseEntity<Story> execute(Long id, Story story) {
         User user = this.userRepository.findById(id).orElseThrow();
-        history.setUsers(user);
-        Story storySave = this.storyRepository.save(history);
+        story.setUsers(user);
+        Story storySave = this.storyRepository.save(story);
         return new ResponseEntity<>(storySave, HttpStatus.CREATED);
     }
 }

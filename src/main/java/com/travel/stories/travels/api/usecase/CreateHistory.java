@@ -5,5 +5,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface CreateHistory {
 
-    ResponseEntity<Story> execute(Long id, Story history);
+    ResponseEntity<Story> execute(Long id, Story story);
 }

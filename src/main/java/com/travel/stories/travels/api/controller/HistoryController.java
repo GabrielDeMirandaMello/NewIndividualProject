@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/history")
+@RequestMapping("/api/story")
 @CrossOrigin
 public interface HistoryController {
 
@@ -20,7 +20,7 @@ public interface HistoryController {
     List<Story> getAllHistory();
 
     @PostMapping("/create/{id}")
-    ResponseEntity<Story> createHistory(@PathVariable Long id, @RequestBody Story history);
+    ResponseEntity<Story> createHistory(@PathVariable Long id, @RequestBody Story story);
 
     @DeleteMapping("/{id}")
     void deleteHistory(@PathVariable Long id);
