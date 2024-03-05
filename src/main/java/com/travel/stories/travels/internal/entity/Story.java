@@ -12,10 +12,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "history")
+@Table(name = "story")
 @Data
 @NoArgsConstructor
-public class History implements Serializable {
+public class Story implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

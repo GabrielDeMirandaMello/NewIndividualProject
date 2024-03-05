@@ -2,7 +2,7 @@ package com.travel.stories.travels.internal.controller;
 
 import com.travel.stories.travels.api.controller.HistoryController;
 import com.travel.stories.travels.api.usecase.*;
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.http.ResponseEntity;
@@ -24,17 +24,17 @@ public class DefaultHistoryController implements HistoryController {
     private UpdateDisliked updateDisliked;
 
     @Override
-    public ResponseEntity<History> getHistory(Long id) {
+    public ResponseEntity<Story> getHistory(Long id) {
         return this.getHistoryById.execute(id);
     }
 
     @Override
-    public List<History> getAllHistory() {
+    public List<Story> getAllHistory() {
         return this.getHistorys.execute();
     }
 
     @Override
-    public ResponseEntity<History> createHistory(Long id, History history) {
+    public ResponseEntity<Story> createHistory(Long id, Story history) {
         return this.createHistory.execute(id, history);
     }
 
@@ -54,7 +54,7 @@ public class DefaultHistoryController implements HistoryController {
     }
 
     @Override
-    public ResponseEntity<List<History>> retrieveStorys(String type, String filtrate, String buscar) {
+    public ResponseEntity<List<Story>> retrieveStorys(String type, String filtrate, String buscar) {
         return this.retrieveStorys.execute(type, filtrate, buscar);
     }
 }

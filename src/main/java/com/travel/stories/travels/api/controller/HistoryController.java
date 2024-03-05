@@ -1,6 +1,6 @@
 package com.travel.stories.travels.api.controller;
 
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +13,14 @@ import java.util.List;
 public interface HistoryController {
 
     @GetMapping("/{id}")
-    ResponseEntity<History> getHistory(@PathVariable Long id);
+    ResponseEntity<Story> getHistory(@PathVariable Long id);
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    List<History> getAllHistory();
+    List<Story> getAllHistory();
 
     @PostMapping("/create/{id}")
-    ResponseEntity<History> createHistory(@PathVariable Long id, @RequestBody History history);
+    ResponseEntity<Story> createHistory(@PathVariable Long id, @RequestBody Story history);
 
     @DeleteMapping("/{id}")
     void deleteHistory(@PathVariable Long id);
@@ -32,5 +32,5 @@ public interface HistoryController {
     void updateDisliked(@PathVariable String id);
 
     @GetMapping("/{type}/{filtrate}/{buscar}")
-    ResponseEntity<List<History>> retrieveStorys(@PathVariable String type, @PathVariable String filtrate, @PathVariable String buscar );
+    ResponseEntity<List<Story>> retrieveStorys(@PathVariable String type, @PathVariable String filtrate, @PathVariable String buscar );
 }

@@ -1,11 +1,11 @@
 package com.travel.stories.travels.api.usecase;
 
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface RetrieveStorys {
 
-    ResponseEntity<List<History>> execute(String type, String filtrate, String buscar);
+    ResponseEntity<List<Story>> execute(String type, String filtrate, String buscar);
 }
