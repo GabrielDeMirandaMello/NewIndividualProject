@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     @NotNull
     @Size(min = 3)
     private String name;

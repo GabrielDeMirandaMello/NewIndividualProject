@@ -22,13 +22,11 @@ public class Comment {
     @Column(name = "description")
     private String description;
 
-    @Id
     @ManyToOne
     private Story storyId;
 
-    @Id
     @ManyToOne
-    private User userId;;
+    private User userId;
 
     @Column(name = "date_time")
     private LocalDateTime dateTime;
