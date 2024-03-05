@@ -66,6 +66,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "users")
     private List<Story> histories;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Likeded> likededs;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Comment> comments;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.role != UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));

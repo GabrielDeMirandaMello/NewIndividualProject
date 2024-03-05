@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "story")
@@ -28,9 +29,6 @@ public class Story implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "comment")
-    private String comment;
-
     @Column(name = "like_count")
     private Long likeCount;
 
@@ -41,6 +39,14 @@ public class Story implements Serializable {
 
     @Column(name = "name_user")
     private String nameUser;
+
+    @OneToMany
+    @JoinColumn(name = "story_id")
+    private List<Likeded> likededs;
+
+    @OneToMany
+    @JoinColumn(name = "story_id")
+    private List<Comment> comments;
 
 //    @Nullable
 //    @JsonIgnore

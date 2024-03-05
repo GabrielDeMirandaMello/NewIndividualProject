@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "comment")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"story_id", "user_id"}))
 public class Comment {
 
     @Id
@@ -22,11 +22,13 @@ public class Comment {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "story_id")
-    private Long storyId;
+    @Id
+    @ManyToOne
+    private Story storyId;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @Id
+    @ManyToOne
+    private User userId;;
 
     @Column(name = "date_time")
     private LocalDateTime dateTime;

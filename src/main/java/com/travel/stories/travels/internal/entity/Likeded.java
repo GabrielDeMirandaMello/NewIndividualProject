@@ -7,24 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "likeded")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"story_id", "user_id"}))
 public class Likeded {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @ManyToOne
+    private Story storyId;
 
-    @Column(name = "story_id")
-    private Long storyId;
-
-    @Column(name = "user_id")
-    private Long userId;
+    @Id
+    @ManyToOne
+    private User userId;
 
     @Column(name = "date_time")
     private LocalDateTime dateTime;

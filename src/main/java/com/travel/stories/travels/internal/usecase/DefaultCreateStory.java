@@ -1,6 +1,6 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.api.usecase.CreateHistory;
+import com.travel.stories.travels.api.usecase.CreateStory;
 import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.entity.User;
 import com.travel.stories.travels.internal.repository.StoryRepository;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @AllArgsConstructor
-public class DefaultCreateHistory implements CreateHistory {
+public class DefaultCreateStory implements CreateStory {
 
     @Autowired
     private StoryRepository storyRepository;

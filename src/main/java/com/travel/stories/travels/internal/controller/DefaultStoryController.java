@@ -1,6 +1,6 @@
 package com.travel.stories.travels.internal.controller;
 
-import com.travel.stories.travels.api.controller.HistoryController;
+import com.travel.stories.travels.api.controller.StoryController;
 import com.travel.stories.travels.api.usecase.*;
 import com.travel.stories.travels.internal.entity.Story;
 import lombok.AllArgsConstructor;
@@ -12,20 +12,20 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@ConditionalOnSingleCandidate(HistoryController.class)
-public class DefaultHistoryController implements HistoryController {
+@ConditionalOnSingleCandidate(StoryController.class)
+public class DefaultStoryController implements StoryController {
 
-    private CreateHistory createHistory;
-    private GetHistoryById getHistoryById;
-    private GetHistorys getHistorys;
-    private DeleteHistoryById deleteHistoryById;
+    private CreateStory createHistory;
+    private GetStoryById getStoryById;
+    private GetStorys getHistorys;
+    private DeleteStoryById deleteStoryById;
     private UpdateLike updateLike;
     private RetrieveStorys retrieveStorys;
     private UpdateDisliked updateDisliked;
 
     @Override
     public ResponseEntity<Story> getHistory(Long id) {
-        return this.getHistoryById.execute(id);
+        return this.getStoryById.execute(id);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DefaultHistoryController implements HistoryController {
 
     @Override
     public void deleteHistory(Long id) {
-        this.deleteHistoryById.execute(id);
+        this.deleteStoryById.execute(id);
     }
 
     @Override

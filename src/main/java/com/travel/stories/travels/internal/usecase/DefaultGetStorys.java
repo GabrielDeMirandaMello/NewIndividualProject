@@ -1,6 +1,6 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.api.usecase.GetHistorys;
+import com.travel.stories.travels.api.usecase.GetStorys;
 import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @AllArgsConstructor
-public class DefaultGetHistorys implements GetHistorys {
+public class DefaultGetStorys implements GetStorys {
     @Autowired
     private StoryRepository storyRepository;
 

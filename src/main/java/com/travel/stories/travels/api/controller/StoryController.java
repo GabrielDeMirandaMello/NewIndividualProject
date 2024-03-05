@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/story")
 @CrossOrigin
-public interface HistoryController {
+public interface StoryController {
 
     @GetMapping("/{id}")
     ResponseEntity<Story> getHistory(@PathVariable Long id);

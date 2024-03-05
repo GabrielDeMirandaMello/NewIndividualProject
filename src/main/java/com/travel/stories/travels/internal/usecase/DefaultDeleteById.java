@@ -1,6 +1,6 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.api.usecase.DeleteHistoryById;
+import com.travel.stories.travels.api.usecase.DeleteStoryById;
 import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @AllArgsConstructor
-public class DefaultDeleteById implements DeleteHistoryById {
+public class DefaultDeleteById implements DeleteStoryById {
     @Autowired
     private StoryRepository storyRepository;
     @Override
