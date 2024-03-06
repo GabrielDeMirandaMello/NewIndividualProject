@@ -47,9 +47,4 @@ public class Story implements Serializable {
     @OneToMany
     @JoinColumn(name = "story_id")
     private List<Comment> comments;
-
-//    @Nullable
-//    @JsonIgnore
-//    @Column(name = "travel_picture", length = 50 * 1024 * 1024)
-//    private byte[] travelPicture;
 }
