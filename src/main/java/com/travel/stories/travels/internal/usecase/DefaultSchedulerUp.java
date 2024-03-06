@@ -1,8 +1,8 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.internal.entity.History;
+import com.travel.stories.travels.internal.entity.Story;
 import com.travel.stories.travels.internal.entity.User;
-import com.travel.stories.travels.internal.repository.HistoryRepository;
+import com.travel.stories.travels.internal.repository.StoryRepository;
 import com.travel.stories.travels.internal.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -23,12 +23,12 @@ public class DefaultSchedulerUp {
     private UserRepository userRepository;
 
     @Autowired
-    private HistoryRepository historyRepository;
+    private StoryRepository storyRepository;
 
     @Scheduled(cron = "0 0/1 * 1/1 * ? *")
     public void UpSystem(){
         List<User> allUser = userRepository.findAll();
-        List<History> allStory = historyRepository.findAll();
+        List<Story> allStory = storyRepository.findAll();
         System.out.println(allUser);
         System.out.println(allStory);
     }

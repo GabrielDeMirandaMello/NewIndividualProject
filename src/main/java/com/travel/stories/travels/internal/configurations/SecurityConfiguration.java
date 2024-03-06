@@ -47,6 +47,10 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT, "/api/history/like/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/history/disliked/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/history/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/likeded").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/likeded").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/comment").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/comment").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

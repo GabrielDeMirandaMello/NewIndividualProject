@@ -1,8 +1,8 @@
 package com.travel.stories.travels.internal.usecase;
 
-import com.travel.stories.travels.api.usecase.GetHistoryById;
-import com.travel.stories.travels.internal.entity.History;
-import com.travel.stories.travels.internal.repository.HistoryRepository;
+import com.travel.stories.travels.api.usecase.GetStoryById;
+import com.travel.stories.travels.internal.entity.Story;
+import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import java.util.Optional;
 @Service
 @Transactional
 @AllArgsConstructor
-public class DefaultGetHistoryById implements GetHistoryById {
+public class DefaultGetStoryById implements GetStoryById {
     @Autowired
-    private HistoryRepository historyRepository;
+    private StoryRepository storyRepository;
 
     @Override
-    public ResponseEntity<History> execute(Long id) {
-        Optional<History> history = this.historyRepository.findById(id);
+    public ResponseEntity<Story> execute(Long id) {
+        Optional<Story> history = this.storyRepository.findById(id);
         return history.map( value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

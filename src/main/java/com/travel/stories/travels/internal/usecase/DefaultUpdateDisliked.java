@@ -1,8 +1,8 @@
 package com.travel.stories.travels.internal.usecase;
 
 import com.travel.stories.travels.api.usecase.UpdateDisliked;
-import com.travel.stories.travels.internal.entity.History;
-import com.travel.stories.travels.internal.repository.HistoryRepository;
+import com.travel.stories.travels.internal.entity.Story;
+import com.travel.stories.travels.internal.repository.StoryRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
 public class DefaultUpdateDisliked implements UpdateDisliked {
 
     @Autowired
-    private HistoryRepository historyRepository;
+    private StoryRepository storyRepository;
 
     @Override
     public void execute(String id) {
-        History history = this.historyRepository.findById(Long.parseLong(id)).orElseThrow();
-        history.setLikeCount(history.getLikeCount() - 1);
-        this.historyRepository.save(history);
+        Story story = this.storyRepository.findById(Long.parseLong(id)).orElseThrow();
+        story.setLikeCount(story.getLikeCount() - 1);
+        this.storyRepository.save(story);
     }
 }

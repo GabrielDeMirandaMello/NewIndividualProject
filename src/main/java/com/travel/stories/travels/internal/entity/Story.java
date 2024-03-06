@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "history")
+@Table(name = "story")
 @Data
 @NoArgsConstructor
-public class History implements Serializable {
+public class Story implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +29,6 @@ public class History implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "comment")
-    private String comment;
-
     @Column(name = "like_count")
     private Long likeCount;
 
@@ -42,8 +40,11 @@ public class History implements Serializable {
     @Column(name = "name_user")
     private String nameUser;
 
-//    @Nullable
-//    @JsonIgnore
-//    @Column(name = "travel_picture", length = 50 * 1024 * 1024)
-//    private byte[] travelPicture;
+    @OneToMany
+    @JoinColumn(name = "story_id")
+    private List<Likeded> likededs;
+
+    @OneToMany
+    @JoinColumn(name = "story_id")
+    private List<Comment> comments;
 }
