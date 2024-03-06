@@ -15,42 +15,30 @@ import java.util.List;
 @ConditionalOnSingleCandidate(StoryController.class)
 public class DefaultStoryController implements StoryController {
 
-    private CreateStory createHistory;
+    private CreateStory createStory;
     private GetStoryById getStoryById;
-    private GetStorys getHistorys;
+    private GetStorys getStorys;
     private DeleteStoryById deleteStoryById;
-    private UpdateLike updateLike;
     private RetrieveStorys retrieveStorys;
-    private UpdateDisliked updateDisliked;
 
     @Override
-    public ResponseEntity<Story> getHistory(Long id) {
+    public ResponseEntity<Story> getStory(Long id) {
         return this.getStoryById.execute(id);
     }
 
     @Override
-    public List<Story> getAllHistory() {
-        return this.getHistorys.execute();
+    public List<Story> getAllStory() {
+        return this.getStorys.execute();
     }
 
     @Override
-    public ResponseEntity<Story> createHistory(Long id, Story story) {
-        return this.createHistory.execute(id, story);
+    public ResponseEntity<Story> createStory(Long id, Story story) {
+        return this.createStory.execute(id, story);
     }
 
     @Override
-    public void deleteHistory(Long id) {
+    public void deleteStory(Long id) {
         this.deleteStoryById.execute(id);
-    }
-
-    @Override
-    public void updateLike(String id) {
-        this.updateLike.execute(id);
-    }
-
-    @Override
-    public void updateDisliked(String id) {
-        this.updateDisliked.execute(id);
     }
 
     @Override

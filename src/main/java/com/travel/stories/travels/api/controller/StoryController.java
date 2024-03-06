@@ -13,23 +13,17 @@ import java.util.List;
 public interface StoryController {
 
     @GetMapping("/{id}")
-    ResponseEntity<Story> getHistory(@PathVariable Long id);
+    ResponseEntity<Story> getStory(@PathVariable Long id);
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    List<Story> getAllHistory();
+    List<Story> getAllStory();
 
     @PostMapping("/create/{id}")
-    ResponseEntity<Story> createHistory(@PathVariable Long id, @RequestBody Story story);
+    ResponseEntity<Story> createStory(@PathVariable Long id, @RequestBody Story story);
 
     @DeleteMapping("/{id}")
-    void deleteHistory(@PathVariable Long id);
-
-    @PutMapping("/like/{id}")
-    void updateLike(@PathVariable String id);
-
-    @PutMapping("/disliked/{id}")
-    void updateDisliked(@PathVariable String id);
+    void deleteStory(@PathVariable Long id);
 
     @GetMapping("/{type}/{filtrate}/{buscar}")
     ResponseEntity<List<Story>> retrieveStorys(@PathVariable String type, @PathVariable String filtrate, @PathVariable String buscar );
