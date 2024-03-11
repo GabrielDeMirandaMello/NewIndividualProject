@@ -41,10 +41,12 @@ public class Story implements Serializable {
     private String nameUser;
 
     @OneToMany
+    @JsonIgnore
     @JoinColumn(name = "story_id")
     private List<Likeded> likededs;
 
     @OneToMany
+    @JsonIgnore
     @JoinColumn(name = "story_id")
     private List<Comment> comments;
 }

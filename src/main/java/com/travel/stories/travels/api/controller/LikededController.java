@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/likeded")
+@CrossOrigin
 public interface LikededController {
 
     @PostMapping
